@@ -10,3 +10,5 @@ def group_redirect(request):
     else:
         # If user is in neither group, get sent back to home
         return render(request, 'home.html')
+
+
