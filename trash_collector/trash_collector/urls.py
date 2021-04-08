@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # First adding our custom routes from our accounts app's urls.py (for our custom registration)

@@ -13,3 +13,11 @@ def index(request):
     # Will also be useful in any function that needs
     print(user)
     return render(request, 'customers/index.html')
+
+
+def pickup_day(request, customer_id):
+    pickup = Customer.objects.get(pk=customer_id)
+    context = {
+        'Customer': pickup
+    }
+    return render(request, 'Customer/pickup.html', context)
