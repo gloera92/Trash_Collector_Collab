@@ -16,11 +16,15 @@ def index(request):
     return render(request, 'customers/index.html')
 
 
-def pickup_day(request, customer_id):
-    user_id = customer_id
-    pickup = Customer.objects.get(pk=user_id)
+def pickup_day(request):
+    # we have request.user
+    # need to query the customer table to find the customer object whose user_id
+    # matches the id of request.user
+    # Then, we have the customer who is using the application
+
+    pickup = Customer.objects.get(user_id=request.user)
     context = {
-        'pickup': pickup
+        'Customer': pickup
     }
     return render(request, 'customers/pickup.html', context)
 
