@@ -18,6 +18,6 @@ def index(request):
 def pickup_day(request, customer_id):
     pickup = Customer.objects.get(pk=customer_id)
     context = {
-        'Customer': pickup
+        'pickup': pickup
     }
-    return render(request, 'Customer/pickup.html', context)
+    return render(request, 'customers/pickup.html', context)
