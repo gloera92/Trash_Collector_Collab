@@ -20,7 +20,7 @@ def pickup_day(request, customer_id):
     user_id = customer_id
     pickup = Customer.objects.get(pk=user_id)
     context = {
-        'Customer': pickup
+        'pickup': pickup
     }
     return render(request, 'customers/pickup.html', context)
 
