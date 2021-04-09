@@ -29,14 +29,9 @@ def create(request):
 
     if request.method == 'POST':
         name = request.POST.get('name')
-        user = request.POST.get('user')
-        pick_up_date = request.POST.get('pick_up_date')
-        suspend_start = request.POST.get('suspend_start')
-        suspend_end = request.POST.get('suspend_end')
-        amount_owed = request.POST.get('amount_owed')
         address = request.POST.get('address')
         zip_code = request.POST.get('zip_code')
-        new_customer = Customer(name=name, user=user, pick_up_date=pick_up_date, suspend_start=suspend_start, suspend_end=suspend_end, amount_owed=amount_owed, address=address, zip_code=zip_code)
+        new_customer = Customer(name=name, user=request.user, address=address, zip_code=zip_code)
         new_customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:
