@@ -8,14 +8,23 @@
     <title>Start and End Day</title>
 </head>
 <body>
-<h1>Start and End Day</h1>
+
+<h1>Suspension Day</h1>
 {% csrf_token %}
 <h2>Current Pickup Day</h2>
 {{Customer.pickup_date}}<br>
-<h2>Date to Suspend</h2>
-<form action="{% url 'customers:start_end_day' %}" method="post">
+<h2>Date to Start Suspending</h2>
+<form action="{% url 'customers:start_day' %}" method="post">
     {% csrf_token %}
-    Pickup Date:<input type="text" name="Suspend Date" placeholder="Monday-Sunday" id="Suspend Date"><br>
+    Pickup Date:<input type="text" name="Suspend Start Date" placeholder="yyyy/mm/dd" id="Suspend Start Date"><br>
+<input type="submit" value="Submit!"></form>
+
+
+<h2>Date to End Suspension</h2>
+{% csrf_token %}
+<form action="{% url 'customers:end_day' %}" method="post">
+    {% csrf_token %}
+    Pickup Date:<input type="text" name="Suspend End Date" placeholder="yyyy/mm/dd" id="Suspend End Date"><br>
 <input type="submit" value="Submit!">
 </form>
 

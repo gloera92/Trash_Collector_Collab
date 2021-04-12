@@ -52,9 +52,21 @@ def change_day(request):
         return render(request, 'customers/pickup.html')
 
 
-def start_end_day(request):
-    start_end = Customer.objects.get(user_id=request.user)
-    context = {
-        'Customer': start_end
-    }
-    return render(request, 'customers/start_end_day.html', context)
+def suspend_start_day(request):
+    if request.method == 'POST':
+        user = Customer.objects.get(user_id=request.user)
+        user.suspend_start = request.POST.get('Suspend Start Date')
+        user.save()
+        return HttpResponseRedirect(reverse('customers:start_end_day'))
+    else:
+        return render(request, 'customers/start_end_day.html')
+
+
+def suspend_end_day(request):
+    if request.method == 'POST':
+        user = Customer.objects.get(user_id=request.user)
+        user.suspend_end = request.POST.get('Suspend End Date')
+        user.save()
+        return HttpResponseRedirect(reverse('customers:end_day'))
+    else:
+        return render(request, 'customers/start_end_day.html')
