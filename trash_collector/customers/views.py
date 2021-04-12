@@ -40,3 +40,11 @@ def create(request):
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/create.html')
+
+
+def change_day(request):
+    new_day = input('Please enter what day of the week you would like your trash to be picked up.')
+    pickup_date = new_day
+    new_pickup = Customer(pickup_date=pickup_date)
+    new_pickup.save()
+    return HttpResponseRedirect(reverse('customers:index'))
