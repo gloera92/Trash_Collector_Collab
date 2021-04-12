@@ -40,3 +40,13 @@ def create(request):
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/create.html')
+
+
+def change_day(request):
+    if request.method == 'POST':
+        pickup_date = request.POST.get('Pickup Date')
+        new_pickup = Customer(pickup_date=pickup_date, user=request.user)
+        new_pickup.save()
+        return HttpResponseRedirect(reverse('customers:pickup'))
+    else:
+        return render(request, 'customers/pickup.html')
