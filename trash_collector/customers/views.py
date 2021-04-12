@@ -45,8 +45,16 @@ def create(request):
 def change_day(request):
     if request.method == 'POST':
         pickup_date = request.POST.get('Pickup Date')
-        new_pickup = Customer(pickup_date=pickup_date, user=request.user)
+        new_pickup = Customer(pickup_date=pickup_date)
         new_pickup.save()
         return HttpResponseRedirect(reverse('customers:pickup'))
     else:
         return render(request, 'customers/pickup.html')
+
+
+def start_end_day(request):
+    start_end = Customer.objects.get(user_id=request.user)
+    context = {
+        'Customer': start_end
+    }
+    return render(request, 'customers/start_end_day.html', context)

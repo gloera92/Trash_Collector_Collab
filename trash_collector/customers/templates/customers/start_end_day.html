@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Start and End Day</title>
+</head>
+<body>
+<h1>Start and End Day</h1>
+{% csrf_token %}
+<h2>Current Pickup Day</h2>
+{{Customer.pickup_date}}<br>
+<h2>Date to Suspend</h2>
+<form action="{% url 'customers:start_end_day' %}" method="post">
+    {% csrf_token %}
+    Pickup Date:<input type="text" name="Suspend Date" placeholder="Monday-Sunday" id="Suspend Date"><br>
+<input type="submit" value="Submit!">
+</form>
+
+
+
+</body>
+</html>
