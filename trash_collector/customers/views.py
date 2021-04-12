@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Customer
 from django.urls import reverse
 # Create your views here.
@@ -12,8 +12,15 @@ def index(request):
     user = request.user
     # This will be useful while creating a customer to assign the logged in user as the user foreign key
     # Will also be useful in any function that needs
-    print(user)
-    return render(request, 'customers/index.html')
+
+    if Customer.objects.filter(user=request.user).exists():
+        print(user)
+        return render(request, 'customers/index.html')
+
+    else:
+        return render(request, 'customers/create.html')
+
+
 
 
 def pickup_day(request):
