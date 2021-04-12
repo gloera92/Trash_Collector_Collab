@@ -44,9 +44,9 @@ def create(request):
 
 def change_day(request):
     if request.method == 'POST':
-        pickup_date = request.POST.get('Pickup Date')
-        new_pickup = Customer(pickup_date=pickup_date)
-        new_pickup.save()
+        user = Customer.objects.get(user_id=request.user)
+        user.pickup_date = request.POST.get('Pickup Date')
+        user.save()
         return HttpResponseRedirect(reverse('customers:pickup'))
     else:
         return render(request, 'customers/pickup.html')
