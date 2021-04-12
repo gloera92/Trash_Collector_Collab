@@ -9,8 +9,14 @@
 </head>
 <body>
 <h1>Pick Up Date</h1>
-{{Customer.pickup_date}}
-<a href='change_day'><button type="button" class="btn">Change Day</button></a>
-  <a class="btn" aria-current="page"  href='change_day'>Pick up Day</a>
+{% csrf_token %}
+<h2>Current Pickup Day</h2>
+{{Customer.pickup_date}}<br>
+<h2>Change Pickup Day</h2>
+<form action="{% url 'customers:change_day' %}" method="post">
+    {% csrf_token %}
+    Pickup Date:<input type="text" name="Pickup Date" placeholder="Monday-Sunday" id="Pickup Date"><br>
+<input type="submit" value="Submit!">
+</form>
 </body>
 </html>

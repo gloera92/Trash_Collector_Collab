@@ -43,8 +43,10 @@ def create(request):
 
 
 def change_day(request):
-    new_day = input('Please enter what day of the week you would like your trash to be picked up.')
-    pickup_date = new_day
-    new_pickup = Customer(pickup_date=pickup_date)
-    new_pickup.save()
-    return HttpResponseRedirect(reverse('customers:index'))
+    if request.method == 'POST':
+        pickup_date = request.POST.get('Pickup Date')
+        new_pickup = Customer(pickup_date=pickup_date, user=request.user)
+        new_pickup.save()
+        return HttpResponseRedirect(reverse('customers:pickup'))
+    else:
+        return render(request, 'customers/pickup.html')
