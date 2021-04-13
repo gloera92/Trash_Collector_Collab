@@ -5,17 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Start and End Day</title>
+    <title>One Time Pickup</title>
 </head>
 <body>
 
-<h1>Suspension Day</h1>
+<h1>One Time Pickup Date</h1>
 {% csrf_token %}
-<h2>Date to Start Suspending</h2>
-<form action="{% url 'customers:start_end_day' %}" method="post">
+<h2>Date of Pickup</h2>
+<form action="{% url 'customers:one_time_pickup' %}" method="post">
     {% csrf_token %}
-    Start Date:<input type="date" name="Suspend Start Date" placeholder="yyyy-mm-dd" id="Suspend Start Date"><br>
-    End Date:<input type="date" name="Suspend End Date" placeholder="yyyy-mm-dd" id="Suspend End Date"><br>
+    Start Date:<input type="date" name="One Time Pickup" placeholder="yyyy-mm-dd" id="One Time Pickup"><br>
     <input type="submit" value="Submit!">
 </form>
 </body>
