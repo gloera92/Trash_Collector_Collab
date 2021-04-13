@@ -14,19 +14,16 @@
 <h2>Current Pickup Day</h2>
 {{Customer.pickup_date}}<br>
 <h2>Date to Start Suspending</h2>
-<form action="{% url 'customers:index' %}" method="post">
+<form action="{% url 'customers:start_end_day' %}" method="post">
     {% csrf_token %}
-    Pickup Date:<input type="text" name="Suspend Start Date" placeholder="yyyy/mm/dd" id="Suspend Start Date"><br>
-<input type="submit" value="Submit!"></form>
+    Suspend Start Date:<input type="text" name="Suspend Start Date" placeholder="yyyy/mm/dd" id="Suspend Start Date"><br>
+    Suspend End Date:<input type="text" name="Suspend End Date" placeholder="yyyy/mm/dd" id="Suspend End Date"><br>
+    
+
+<input type="submit"  value="Submit!"></form>
 
 
-<h2>Date to End Suspension</h2>
-{% csrf_token %}
-<form action="{% url 'customers:index' %}" method="post">
-    {% csrf_token %}
-    Pickup Date:<input type="text" name="Suspend End Date" placeholder="yyyy/mm/dd" id="Suspend End Date"><br>
-<input type="submit" value="Submit!">
-</form>
+
 
 
 

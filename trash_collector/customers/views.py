@@ -63,18 +63,10 @@ def suspend_start_day(request):
     if request.method == 'POST':
         user = Customer.objects.get(user_id=request.user)
         user.suspend_start = request.POST.get('Suspend Start Date')
-        user.save()
-        return HttpResponseRedirect(reverse('customers:index'))
-    else:
-        return render(request, 'customers/start_end_day.html')
-
-
-def suspend_end_day(request):
-    if request.method == 'POST':
-        user = Customer.objects.get(user_id=request.user)
         user.suspend_end = request.POST.get('Suspend End Date')
         user.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/start_end_day.html')
+
 
