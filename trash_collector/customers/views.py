@@ -78,4 +78,3 @@ def one_time_pickup(request):
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/one_time_pickup.html')
-
