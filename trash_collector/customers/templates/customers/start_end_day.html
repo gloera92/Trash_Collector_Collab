@@ -14,6 +14,7 @@
 <h2>Current Pickup Day</h2>
 {{Customer.pickup_date}}<br>
 <h2>Date to Start Suspending</h2>
+<<<<<<< HEAD
 <form action="{% url 'customers:start_end_day' %}" method="post">
     {% csrf_token %}
     Start Date:<input type="text" name="Suspend Start Date" placeholder="yyyy/mm/dd" id="Suspend Start Date"><br>
