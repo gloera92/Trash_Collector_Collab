@@ -1,26 +1,19 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Start and End Day</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>Suspension Day</h1>
+{% block title %}{% block header %} Suspend Account {% endblock %}{% endblock %}
+
+{% block content %}
+
 {% csrf_token %}
-<h2>Date to Start Suspending</h2>
+<h3>Date to Start Suspending</h3>
 <form action="{% url 'customers:start_end_day' %}" method="post">
     {% csrf_token %}
     Start Date:<input type="date" name="Suspend Start Date" placeholder="yyyy-mm-dd" id="Suspend Start Date"><br>
     End Date:<input type="date" name="Suspend End Date" placeholder="yyyy-mm-dd" id="Suspend End Date"><br>
     <input type="submit" value="Submit!">
 </form>
+{% endblock %}
 
 
 
 
-</body>
-</html>
