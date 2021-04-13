@@ -14,6 +14,4 @@ urlpatterns = [
     path('one_time_pickup/', views.one_time_pickup, name='one_time_pickup'),
     path('account_info/', views.account_info, name='account_info'),
     path('', views.amount_owed, name='amount_owed')
-
-
 ]
