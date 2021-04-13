@@ -69,6 +69,7 @@ def suspend_start_day(request):
     else:
         return render(request, 'customers/start_end_day.html')
 
+
 def one_time_pickup(request):
     if request.method == 'POST':
         user = Customer.objects.get(user_id=request.user)
@@ -77,3 +78,19 @@ def one_time_pickup(request):
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/one_time_pickup.html')
+
+
+def account_info(request):
+    user = Customer.objects.get(user_id=request.user)
+    context = {
+        'Customer': user
+    }
+    return render(request, 'customers/account_info.html', context)
+
+
+def amount_owed(request):
+    user = Customer.objects.get(user_id=request.user)
+    context = {
+        'Customer': user
+    }
+    return render(request, 'customers/account_info.html', context)

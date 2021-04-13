@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Account Info</title>
+</head>
+<body>
+
+<h1>Account Info</h1>
+{% csrf_token %}
+<h1>Customer Name</h1>
+<h2>{{Customer.name}}</h2>
+<h1>Address</h1>
+<h2>{{Customer.address}}</h2>
+<h1>Zip Code</h1>
+<h2>{{Customer.zip_code}}</h2>
+<h1>Username</h1>
+<h2>{{user.username}}</h2>
+
+
+</body>
+</html>
