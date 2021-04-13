@@ -70,3 +70,12 @@ def suspend_start_day(request):
         return render(request, 'customers/start_end_day.html')
 
 
+def one_time_pickup(request):
+    if request.method == 'POST':
+        user = Customer.objects.get(user_id=request.user)
+        user.one_time_pickup = request.POST.get('One Time Pickup')
+        user.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        return render(request, 'customers/one_time_pickup.html')
+
