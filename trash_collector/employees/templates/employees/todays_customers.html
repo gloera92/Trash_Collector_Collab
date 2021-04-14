@@ -4,9 +4,9 @@
 
 {% block content %}
 
-{{Customer.pickup_date}}
+ {% for Customer in employee_customers %}
+    <li><h2>{{Customer.name}}  </h2>
 
-
-
+{% endfor %}
 
 {% endblock %}

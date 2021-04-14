@@ -26,7 +26,7 @@ def todays_pickup(request):
         all_customers = Customer.objects.all()
         employee_customers = all_customers.filter(pickup_date=pickup)
         context = {
-            'Customer': employee_customers
+            'employee_customers': employee_customers
         }
         return render(request, 'employees/todays_customers.html', context)
     else:
