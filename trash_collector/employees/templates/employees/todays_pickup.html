@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}{% block header %} Pickup Day {% endblock %}{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+<h2>{{Customer.pickup_date}}</h2>
+
+{% endblock %}

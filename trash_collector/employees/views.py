@@ -15,9 +15,10 @@ def index(request):
 
 def todays_pickup(request):
     Customer = apps.get_model('customers.Customer')
-    pickup = Customer.objects.filter(Customer.pickup_date)
-    if pickup == 'Monday':
-        print(Customer.name)
+    all_customers = Customer.objects.all()
+    employees_customers = all_customers.filter(pickup_date=all_customers)
+    if employees_customers == 'Monday':
+        print(Customer)
     else:
         return render(request, 'employees/todays_pickup.html')
 

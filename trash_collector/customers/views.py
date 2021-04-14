@@ -21,8 +21,6 @@ def index(request):
         return render(request, 'customers/create.html')
 
 
-
-
 def pickup_day(request):
     # we have request.user
     # need to query the customer table to find the customer object whose user_id
