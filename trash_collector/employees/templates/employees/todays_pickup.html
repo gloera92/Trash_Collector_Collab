@@ -1,10 +1,21 @@
-{% extends 'base.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h3>Change Pickup Day</h3>
+<form action="{% url 'employees:todays_pickup' %}" method="post">
+    {% csrf_token %}
+    Day of Week:<input type="text" name="Todays Pickup" placeholder="Monday-Sunday" id="Todays Pickup"><br>
+<input type="submit" value="Submit!">
+</form>
+<p>{{employee.name}}</p>
+</body>
+</html>
 
 
-{% block title %}{% block header %} Today's Pickups {% endblock %}{% endblock %}
-
-{% block content %}
-
-{% csrf_token %}
-{{employees_customers.name}}
-{% endblock %}
