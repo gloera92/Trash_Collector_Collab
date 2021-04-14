@@ -20,14 +20,17 @@ def index(request):
 
 
 def todays_pickup(request):
-    if request.method == "GET":
-
+    if request.method == 'POST':
+        pickup = request.POST.get('Todays_Pickup')
         Customer = apps.get_model('customers.Customer')
-        employee = Employees.objects.get(pk=1)
+        all_customers = Customer.objects.all()
+        employee_customers = all_customers.filter(pickup_date=pickup)
         context = {
-            'employee': employee
+            'Customer': employee_customers
         }
-    return render(request, 'employees/todays_pickup.html', context)
+        return render(request, 'employees/todays_customers.html', context)
+    else:
+        return render(request, 'employees/todays_pickup.html')
 
 
 def create(request):

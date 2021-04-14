@@ -8,13 +8,12 @@
     <title>Document</title>
 </head>
 <body>
-<h3>Change Pickup Day</h3>
+<h3>Today's Pickups</h3>
 <form action="{% url 'employees:todays_pickup' %}" method="post">
     {% csrf_token %}
-    Day of Week:<input type="text" name="Todays Pickup" placeholder="Monday-Sunday" id="Todays Pickup"><br>
+    Day of Week:<input type="text" name="Todays_Pickup" placeholder="Monday-Sunday" id="Todays_Pickup"><br>
 <input type="submit" value="Submit!">
 </form>
-<p>{{employee.name}}</p>
 </body>
 </html>
 
