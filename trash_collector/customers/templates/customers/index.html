@@ -8,8 +8,6 @@
     {% csrf_token %}
 
 
-
-
   {% else %}
     <p>You are at the customer index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>
