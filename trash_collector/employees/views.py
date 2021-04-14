@@ -43,3 +43,15 @@ def create(request):
         return HttpResponseRedirect(reverse('employees:index'))
     else:
         return render(request, 'employees/create.html')
+
+
+def confirm(request):
+    if request.method == 'POST':
+        Customer = apps.get_model('customers.Customer')
+        customer = Customer.objects.get(pk=Customer.user_id)
+        customer.amount_owed += 25
+        customer.confirmed = True
+        customer.save()
+        return render(request, 'employees/todays_customers.html')
+    else:
+        return render(request, 'employees/todays_customers.html')

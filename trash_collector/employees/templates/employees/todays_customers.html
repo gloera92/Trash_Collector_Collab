@@ -6,7 +6,7 @@
 
  {% for Customer in employee_customers %}
     <li><h2>{{Customer.name}}  </h2>
-
+ <button type="submit" class="btn btn-info"> <a href="{% url 'employees:confirm' %}" > Confirm Pickup</a></button></li>
 {% endfor %}
 
 {% endblock %}
