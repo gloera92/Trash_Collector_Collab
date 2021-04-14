@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}{% block header %} Today's Pickups {% endblock %}{% endblock %}
+
+{% block content %}
+
+{% csrf_token %}
+{{employees_customers.name}}
+{% endblock %}
