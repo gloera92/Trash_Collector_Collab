@@ -14,4 +14,4 @@ class Customer(models.Model):
     amount_owed = models.IntegerField(default=0.00)
     address = models.CharField(default='main st', max_length=50)
     zip_code = models.CharField(default='11111', max_length=50)
-    confirmed = bool
+    confirmed = models.BooleanField(default=False)

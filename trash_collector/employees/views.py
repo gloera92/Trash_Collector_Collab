@@ -12,7 +12,6 @@ def index(request):
     Customer = apps.get_model('customers.Customer')
     user = request.user
     if Employees.objects.filter(user=request.user).exists():
-        print(user)
         return render(request, 'employees/index.html')
 
     else:
@@ -45,13 +44,13 @@ def create(request):
         return render(request, 'employees/create.html')
 
 
-def confirm(request):
-    if request.method == 'POST':
+def confirm(request, customer_id):
+    if request.method == 'GET':
         Customer = apps.get_model('customers.Customer')
-        customer = Customer.objects.get(pk=Customer.user_id)
+        customer = Customer.objects.get(pk=customer_id)
         customer.amount_owed += 25
         customer.confirmed = True
         customer.save()
-        return render(request, 'employees/todays_customers.html')
+        return render(request, 'employees/confirm.html')
     else:
         return render(request, 'employees/todays_customers.html')
