@@ -9,8 +9,15 @@ from django.apps import apps
 
 def index(request):
     # Get the Customer model from the other app, it can now be used to query the db
-    customer = apps.get_model('customers.Customer')
-    context = {
-        'Customer': customer
-    }
-    return render(request, 'employees/index.html', context)
+    Customer = apps.get_model('customers.Customer')
+    return render(request, 'employees/index.html')
+
+
+def todays_pickup(request):
+    Customer = apps.get_model('customers.Customer')
+    pickup = Customer.objects.filter(Customer.pickup_date)
+    if pickup == 'Monday':
+        print(Customer.name)
+    else:
+        return render(request, 'employees/todays_pickup.html')
+
