@@ -54,3 +54,11 @@ def confirm(request, customer_id):
         return render(request, 'employees/confirm.html')
     else:
         return render(request, 'employees/todays_customers.html')
+
+
+def account_info(request):
+    user = Employees.objects.get(user_id=request.user)
+    context = {
+        'Employees': user
+    }
+    return render(request, 'employees/account_info.html', context)
