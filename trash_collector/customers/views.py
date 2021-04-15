@@ -14,8 +14,11 @@ def index(request):
     # Will also be useful in any function that needs
 
     if Customer.objects.filter(user=request.user).exists():
-        print(user)
-        return render(request, 'customers/index.html')
+        customer = Customer.objects.get(user_id=request.user)
+        context = {
+            'Customer': customer
+        }
+        return render(request, 'customers/index.html',context)
 
     else:
         return render(request, 'customers/create.html')
