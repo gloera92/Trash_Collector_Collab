@@ -2,9 +2,26 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render,reverse
 from django.apps import apps
 from .models import Employees
+import datetime
 # Create your views here.
 
 # TODO: Create a function for each path created in employees/urls.py. Each will need a template as well.
+my_date = datetime.datetime.now()
+todays_day = my_date.isoweekday()
+if todays_day == 1:
+    the_day = "Monday"
+elif todays_day == 2:
+    the_day = "Tuesday"
+elif todays_day == 3:
+    the_day = "Wednesday"
+elif todays_day == 4:
+    the_day = "Thursday"
+elif todays_day == 5:
+    the_day = "Friday"
+elif todays_day == 6:
+    the_day = "Saturday"
+elif todays_day == 7:
+    the_day = "Sunday"
 
 
 def index(request):
@@ -12,7 +29,14 @@ def index(request):
     Customer = apps.get_model('customers.Customer')
     user = request.user
     if Employees.objects.filter(user=request.user).exists():
-        return render(request, 'employees/index.html')
+        employee = Employees.objects.get(user=request.user)
+        all_customers = Customer.objects.all()
+        zip_c = all_customers.filter(zip_code=employee.zip_code)
+        customer = zip_c.filter(pickup_date=the_day)
+        context = {
+            'Employee': employee, 'Customer': customer
+            }
+        return render(request, 'employees/index.html', context)
 
     else:
         return render(request, 'employees/create.html')
